@@ -1,0 +1,113 @@
+{
+  "name": "release-it-workspaces",
+  "version": "0.0.0",
+  "description": "release-it plugin for bumping and publishing yarn workspaces",
+  "keywords": [
+    "release",
+    "release-it",
+    "release-it-plugin",
+    "plugin"
+  ],
+  "repository": "https://github.com/gabrielcsapo/release-it-workspaces",
+  "license": "MIT",
+  "author": "Gabriel J. Csapo <gabecsapo@gmail.com>",
+  "type": "module",
+  "exports": "./index.js",
+  "files": [
+    "index.js"
+  ],
+  "scripts": {
+    "lint": "eslint .",
+    "test": "vitest",
+    "prepare": "husky install",
+    "release": "release-it"
+  },
+  "lint-staged": {
+    "*.js": "eslint"
+  },
+  "dependencies": {
+    "detect-indent": "^7.0.0",
+    "detect-newline": "^4.0.0",
+    "fast-glob": "^3.2.11",
+    "fs-extra": "^10.1.0",
+    "semver": "^7.3.7",
+    "url-join": "^5.0.0",
+    "walk-sync": "^3.0.0"
+  },
+  "devDependencies": {
+    "@release-it/conventional-changelog": "^5.0.0",
+    "broccoli-test-helper": "^2.0.0",
+    "eslint": "^8.19.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "husky": "^8.0.1",
+    "jest": "^28.1.2",
+    "lint-staged": "^13.0.3",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.7.1",
+    "release-it": "^15.1.1",
+    "sinon": "^14.0.0",
+    "tmp": "^0.2.1",
+    "vitest": "^0.17.0"
+  },
+  "peerDependencies": {
+    "release-it": "^15.1.1"
+  },
+  "engines": {
+    "node": ">= 16"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "release-it": {
+    "@release-it/conventional-changelog": {
+      "preset": "conventionalcommits",
+      "infile": "CHANGELOG.md",
+      "types": [
+        {
+          "type": "feat",
+          "section": "Features"
+        },
+        {
+          "type": "fix",
+          "section": "Bug Fixes"
+        },
+        {
+          "type": "chore",
+          "hidden": true
+        },
+        {
+          "type": "docs",
+          "section": "Documentation Updates"
+        },
+        {
+          "type": "style",
+          "hidden": true
+        },
+        {
+          "type": "refactor",
+          "hidden": true
+        },
+        {
+          "type": "perf",
+          "section": "Performance Improvements"
+        },
+        {
+          "type": "test",
+          "hidden": true
+        }
+      ]
+    },
+    "git": {
+      "tagName": "v${version}"
+    },
+    "github": {
+      "release": true,
+      "tokenRef": "GITHUB_AUTH"
+    }
+  },
+  "volta": {
+    "node": "16.15.0"
+  }
+}
