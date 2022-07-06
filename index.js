@@ -1,13 +1,16 @@
 import { readFileSync, writeFileSync, existsSync } from 'fs';
-import { readJSONSync } from 'fs-extra';
+import fsExtra from 'fs-extra';
 import { join, dirname, resolve as _resolve } from 'path';
-import { valid, coerce, parse } from 'semver';
+import semver from 'semver';
 import urlJoin from 'url-join';
 import fg from 'fast-glob';
 import { detectNewline } from 'detect-newline';
 import detectIndent from 'detect-indent';
 // eslint-disable-next-line node/no-missing-import
 import { Plugin } from 'release-it';
+
+const { valid, coerce, parse } = semver;
+const { readJSONSync } = fsExtra;
 
 const options = { write: false };
 
