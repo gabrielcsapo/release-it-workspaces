@@ -148,7 +148,6 @@ export default class WorkspacesPlugin extends Plugin {
     });
 
     const root = this.options.cwd || process.cwd();
-    console.log(root, _resolve(root, ROOT_MANIFEST_PATH));
 
     const { publishConfig, workspaces } = readJSONSync(_resolve(root, ROOT_MANIFEST_PATH));
 
